@@ -41,6 +41,10 @@ public class Invoice {
         this.gros = Money.ZERO;
     }
 
+    public static Invoice generateInvoice(Id id, ClientData client) {
+        return new Invoice(id, client);
+    }
+
     public void addItem(InvoiceLine item) {
         items.add(item);
 
