@@ -47,7 +47,9 @@ public class Invoice {
         net = net.add(item.getNet());
         gros = gros.add(item.getGros());
     }
-
+    public static Invoice generateInvoice(Id invoiceId, ClientData client){
+        return new Invoice(invoiceId,client);
+    }
     /**
      * 
      * @return immutable projection
