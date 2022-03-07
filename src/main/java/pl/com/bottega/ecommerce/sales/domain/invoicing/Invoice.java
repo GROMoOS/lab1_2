@@ -22,20 +22,22 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Invoice {
 
-    private ClientData client;
+    private final ClientData client;
 
     private Money net;
 
     private Money gros;
 
-    private List<InvoiceLine> items;
+    private final List<InvoiceLine> items;
 
-    private Id id;
+    private final Id id;
+
+    private static InvoiceFactory invoiceFactory;
 
     Invoice(Id invoiceId, ClientData client) {
         this.id = invoiceId;
         this.client = client;
-        this.items = new ArrayList<InvoiceLine>();
+        this.items = invoiceFactory.createInvoiceLineList();
 
         this.net = Money.ZERO;
         this.gros = Money.ZERO;
