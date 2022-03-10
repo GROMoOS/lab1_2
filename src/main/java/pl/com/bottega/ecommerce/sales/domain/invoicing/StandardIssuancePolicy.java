@@ -21,7 +21,7 @@ public class StandardIssuancePolicy implements IssuancePolicy {
         descMap.put(ProductType.FOOD, "7% (F)");
         descMap.put(ProductType.STANDARD, "23%");
     }
-    @Override
+
     public Money countTaxValue(RequestItem item) {
         BigDecimal ratio = ratioMap.get(item.getProductData().getType());
         if (ratio == null)
@@ -32,10 +32,6 @@ public class StandardIssuancePolicy implements IssuancePolicy {
 
     @Override
     public Tax getTax(RequestItem item) {
-        String desc = descMap.get(item.getProductData().getType());
-        if (desc == null)
-            throw new IllegalArgumentException(item.getProductData().getType() + " not handled");
-
-        return new Tax(countTaxValue(item), desc);
+        return new Tax(countTaxValue(item), descMap.get(item.getProductData().getType()));
     }
 }
