@@ -33,8 +33,6 @@ public class Payment {
     }
 
     public Payment rollBack() {
-        Id id = Id.generate();
-
         return factory.newPayment(clientData, amount);
     }
 }

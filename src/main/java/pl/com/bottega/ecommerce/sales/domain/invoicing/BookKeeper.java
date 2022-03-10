@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
