@@ -12,20 +12,14 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sales.domain.service.InvoiceFactory;
-import pl.com.bottega.ecommerce.sales.domain.service.TaxCalculatorFactory;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
 
-    public Invoice issuance(InvoiceRequest invoiceRequest) {
+    public Invoice issuance(InvoiceRequest invoiceRequest, TaxCalculatorInterface taxCalculator) {
         Invoice invoice = InvoiceFactory.createInvoice(Id.generate(), invoiceRequest.getClient());
-        TaxCalculator taxCalculator = TaxCalculatorFactory.createTaxCalculator();
         for (RequestItem item : invoiceRequest.getItems()) {
             Money net = item.getTotalCost();
             InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(), item.getQuantity(), net, taxCalculator.calculateTax(item));
