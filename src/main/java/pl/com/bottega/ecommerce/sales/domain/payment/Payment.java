@@ -14,6 +14,7 @@ package pl.com.bottega.ecommerce.sales.domain.payment;
 
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.ClientData;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
+import pl.com.bottega.ecommerce.sales.domain.factory.PaymentFactory;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Payment {
@@ -33,6 +34,6 @@ public class Payment {
     public Payment rollBack() {
         Id id = Id.generate();
 
-        return new Payment(id, clientData, amount.multiplyBy(-1));
+        return PaymentFactory.getPayment(id, clientData, amount.multiplyBy(-1));
     }
 }
