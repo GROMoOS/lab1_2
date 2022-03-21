@@ -29,10 +29,12 @@ public class Payment {
         this.clientData = clientData;
         this.amount = amount;
     }
-
+    public static Payment generatePayment(Id aggregateId, ClientData clientData, Money amount){
+        return new Payment(aggregateId,clientData,amount);
+    }
     public Payment rollBack() {
         Id id = Id.generate();
 
-        return new Payment(id, clientData, amount.multiplyBy(-1));
+        return generatePayment(id, clientData, amount.multiplyBy(-1));
     }
 }
