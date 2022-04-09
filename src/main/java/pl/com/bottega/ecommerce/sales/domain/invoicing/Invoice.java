@@ -32,7 +32,7 @@ public class Invoice {
 
     private Id id;
 
-    Invoice(Id invoiceId, ClientData client) {
+    public Invoice(Id invoiceId, ClientData client) {
         this.id = invoiceId;
         this.client = client;
         this.items = new ArrayList<InvoiceLine>();
@@ -49,7 +49,6 @@ public class Invoice {
     }
 
     /**
-     * 
      * @return immutable projection
      */
     public List<InvoiceLine> getItems() {
